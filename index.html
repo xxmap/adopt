@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="./css/reset.css">
 <link rel="stylesheet" href="./css/star.css">
 <link rel="stylesheet" href="./css/customize.css">
+<script src="js/jquery.min.js"></script>
 </head>
     <body ondragstart="return false">
         <div class="container c1">
@@ -35,17 +36,70 @@
             </div>
             <div class="sky"></div>
         </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/star.js"></script>
-    <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
-        <a class="a2a_button_facebook"></a>
-        <a class="a2a_button_twitter"></a>
-        <a class="a2a_button_telegram"></a>
-        <a class="a2a_button_sina_weibo"></a>
-        <a class="a2a_button_wechat"></a>
-        <a class="a2a_button_copy_link"></a>
-        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-    </div>
-    <script async src="https://static.addtoany.com/menu/page.js"></script>
-</body>
+
+        <script>
+            testApi();
+            function inputGitLink(  ) {
+                $.ajax({
+                    url: 'https://xx-map.com/adoptLink',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    type: 'post',
+                    dataType: "json",
+                    data: {
+                        "_token": "ssssssss",
+                    },
+                    success: function (data) {
+                        // data2=JSON.parse(data);
+                        console.log(data);
+                    }
+                });
+            }
+            function testApi(){
+                // 目標URL（這是JSONPlaceholder的示例資源）
+                const targetUrl = 'https://jsonplaceholder.typicode.com/posts/1';
+
+                // CORS代理URL（使用CORS Anywhere）
+                const corsProxyUrl = 'https://cors-anywhere.herokuapp.com/';
+
+                // 目標URL與CORS代理URL組合成完整的URL
+                const fullUrl = 'https://xx-map.com/adoptLink';
+
+                // 使用XMLHttpRequest來發送GET請求
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', fullUrl, true);
+
+                // 設定請求完成後的處理函式
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        const data = JSON.parse(xhr.responseText);
+                        const dataContainer = document.getElementById('data-container');
+
+                        // 在網頁上顯示資料
+                        dataContainer.textContent = JSON.stringify(data, null, 2);
+                    } else {
+                        console.error(xhr.status);
+                        console.error('請求失敗。');
+                    }
+                };
+
+                // 發送請求
+                xhr.send();
+            }
+        </script>
+
+        
+        <script src="js/star.js"></script>
+        <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_button_telegram"></a>
+            <a class="a2a_button_sina_weibo"></a>
+            <a class="a2a_button_wechat"></a>
+            <a class="a2a_button_copy_link"></a>
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+        </div>
+        <script async src="https://static.addtoany.com/menu/page.js"></script>
+    </body>
 </html>
