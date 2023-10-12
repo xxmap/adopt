@@ -41,7 +41,7 @@
             inputGitLink();
             function inputGitLink(  ) {
                 $.ajax({
-                    url: 'https://xx-map.com/adoptLink',
+                    url: 'http://xx-map.com/adoptLink',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     },
@@ -55,37 +55,6 @@
                         console.log(data);
                     }
                 });
-            }
-            function testApi(){
-                // 目標URL（這是JSONPlaceholder的示例資源）
-                const targetUrl = 'https://jsonplaceholder.typicode.com/posts/1';
-
-                // CORS代理URL（使用CORS Anywhere）
-                const corsProxyUrl = 'https://cors-anywhere.herokuapp.com/';
-
-                // 目標URL與CORS代理URL組合成完整的URL
-                const fullUrl = 'https://xx-map.com/adoptLink';
-
-                // 使用XMLHttpRequest來發送GET請求
-                const xhr = new XMLHttpRequest();
-                xhr.open('POST', fullUrl, true);
-
-                // 設定請求完成後的處理函式
-                xhr.onload = function () {
-                    if (xhr.status === 200) {
-                        const data = JSON.parse(xhr.responseText);
-                        const dataContainer = document.getElementById('data-container');
-
-                        // 在網頁上顯示資料
-                        dataContainer.textContent = JSON.stringify(data, null, 2);
-                    } else {
-                        console.error(xhr.status);
-                        console.error('請求失敗。');
-                    }
-                };
-
-                // 發送請求
-                xhr.send();
             }
         </script>
 
